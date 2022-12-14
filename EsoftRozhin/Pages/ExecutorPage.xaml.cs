@@ -24,5 +24,10 @@ namespace EsoftRozhin.Pages
         {
             InitializeComponent();
         }
+
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.GoBack();
+        }
     }
 }

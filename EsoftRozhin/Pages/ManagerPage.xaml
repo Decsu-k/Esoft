@@ -9,6 +9,16 @@
       Title="ManagerPage">
 
     <Grid>
-        <Button Content="Go" Width="200" Height="30"></Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="113*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/Resources/logo.png" HorizontalAlignment="Left" Margin="20,0,0,0"/>
+        <Button Name="BtnBack" Click="ButtonBack_Click" 
+                Content="Назад" Width="175" Height="40" 
+                HorizontalAlignment="Right" Margin="0,0,20,0" 
+                Background="#00d9bb" Foreground="White" 
+                FontWeight="Bold" FontSize="20"></Button>
+        <Button Grid.Row="2" Content="Manager" Width="200" Height="30"></Button>
     </Grid>
 </Page>

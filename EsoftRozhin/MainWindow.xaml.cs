@@ -29,14 +29,9 @@ namespace EsoftRozhin
             Manager.MainFrame = MainFrame;
         }
 
-        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+        private void MainFrame_ContentRendered(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnManager_Click(object sender, RoutedEventArgs e)
-        {
-
+        
         }
     }
 }

@@ -5,14 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EsoftRozhin"
         mc:Ignorable="d"
-        Title="LoginScreen" Height="600" Width="800" MaxHeight="600" MinWidth="800">
-    <Window.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#FF243238" Offset="1"/>
-            <GradientStop Color="#FF37474F" Offset="0"/>
-        </LinearGradientBrush>
-    </Window.Background>
+        Title="LoginScreen" Height="600" Width="800" MaxHeight="600" MinWidth="800" Background="White">
     <Grid>
-        <Frame Name="MainFrame"></Frame>
+        <Frame ContentRendered="MainFrame_ContentRendered" Name="MainFrame" 
+               Grid.RowSpan="2" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>
