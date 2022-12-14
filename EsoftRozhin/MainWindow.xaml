@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EsoftRozhin"
         mc:Ignorable="d"
-        Title="LoginScreen" Height="600" Width="800" MaxHeight="600" MinWidth="800" Background="White">
+        Title="LoginScreen" Height="600" Width="1000" MinHeight="600" MinWidth="800" Background="White" ResizeMode="CanResizeWithGrip">
     <Grid>
         <Frame ContentRendered="MainFrame_ContentRendered" Name="MainFrame" 
                Grid.RowSpan="2" NavigationUIVisibility="Hidden"></Frame>
