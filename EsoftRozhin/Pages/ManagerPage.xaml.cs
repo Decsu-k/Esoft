@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EsoftRozhin.AppDataFile;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,20 @@ namespace EsoftRozhin.Pages
         public ManagerPage()
         {
             InitializeComponent();
+            var allTypes = EsoftBaseRozhinEntities.GetContext().StatusTask.ToList();
+
+            var currentTask = EsoftBaseRozhinEntities.GetContext().Task.ToList();
+            LViewExecutor.ItemsSource = currentTask;
         }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.GoBack();
+        }
+
+        private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -31,18 +31,18 @@
         <TextBlock Grid.Row="2" Text="Логин"
                    Style="{StaticResource textAvt}" Margin="25,17,0,0" VerticalAlignment="Top" ></TextBlock>
         <TextBox Name="Username" Grid.Row="3"
-                 Style="{StaticResource Txtb}"/>
+                 Style="{StaticResource Txtb}" Foreground="Black"/>
         <TextBlock Grid.Row="4" Text="Пароль"
                    Style="{StaticResource textAvt}" Margin="25,17,0,0" VerticalAlignment="Top" ></TextBlock>
         <PasswordBox Name="Password" Grid.Row="5"
-                 Style="{StaticResource psbTxtb}"/>
+                 Style="{StaticResource psbTxtb}" Foreground="Black"/>
         <Button Grid.Row="6" Name="btnSubmit" 
                 Style="{StaticResource BtnAutho}" FontWeight="Bold"
-                Content="Исполнитель" Click="btnSubmit_Click">
+                Content="Менеджер" Click="btnSubmit_Click">
         </Button>
         <Button Grid.Row="7" Name="btnManager" 
                 Style="{StaticResource BtnAutho}" FontWeight="Bold"
-                Content="Менеджер" Click="btnManager_Click">
+                Content="Исполнитель" Click="btnManager_Click">
 
         </Button>
     </Grid>
