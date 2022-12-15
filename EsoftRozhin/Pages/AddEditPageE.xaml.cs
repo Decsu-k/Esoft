@@ -23,9 +23,14 @@ namespace EsoftRozhin.Pages
     public partial class AddEditPageE : Page
     {
         private Task _currentTask = new Task();
-        public AddEditPageE()
+
+        public AddEditPageE(Task selectedTask)
         {
             InitializeComponent();
+
+            if (selectedTask != null)
+                _currentTask = selectedTask;
+
             DataContext = _currentTask;
             ComboStatus.ItemsSource = EsoftBaseRozhinEntities.GetContext().StatusTask.ToList();
         }
@@ -37,13 +42,14 @@ namespace EsoftRozhin.Pages
             if (string.IsNullOrWhiteSpace(_currentTask.Title))
                 errors.AppendLine("Укажите название задания");
 
-            //if (errors.Length > 0)
-            //{
-            //    MessageBox.Show(errors.ToString());
-            //    return;
-            //}
+            if (errors.Length > 0)
+            {
+                MessageBox.Show(errors.ToString());
+                return;
+            }
             if (_currentTask.ID == 0)
                 EsoftBaseRozhinEntities.GetContext().Task.Add(_currentTask);
+
 
             try
             {

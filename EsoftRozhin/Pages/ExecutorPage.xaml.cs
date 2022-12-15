@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Task = EsoftRozhin.AppDataFile.Task;
 
 namespace EsoftRozhin.Pages
 {
@@ -45,9 +46,9 @@ namespace EsoftRozhin.Pages
             //if (ComboType.SelectedIndex > 0)
             //    currentExecutor = currentExecutor.Where(p => p.Status.Contains(ComboType.SelectedItem as StatusTask)).ToList();
 
-            //currentExecutor = currentExecutor.Where(p => p.Status.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
+            currentExecutor = currentExecutor.Where(p => p.Status.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
 
-            //LViewExecutor.ItemsSource = currentExecutor.OrderBy(p => p.Status).ToList();
+            LViewExecutor.ItemsSource = currentExecutor.OrderBy(p => p.Status).ToList();
 
         }
 
@@ -68,17 +69,34 @@ namespace EsoftRozhin.Pages
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddEditPageE());
+            Manager.MainFrame.Navigate(new AddEditPageE((sender as Button).DataContext as Task));
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
+            var agentForRemoving = LViewExecutor.SelectedItems.Cast<Task>().ToList();
 
+            if (MessageBox.Show($"Вы точно хотите удалить следующие {agentForRemoving.Count()} элементов?", "Внимание",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    EsoftBaseRozhinEntities.GetContext().Task.RemoveRange(agentForRemoving);
+                    EsoftBaseRozhinEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Данные удалены!");
+
+                    LViewExecutor.ItemsSource = EsoftBaseRozhinEntities.GetContext().Task.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddEditPageE());
+            Manager.MainFrame.Navigate(new AddEditPageE(null));
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -86,7 +104,7 @@ namespace EsoftRozhin.Pages
             if (Visibility == Visibility.Visible)
             {
                 EsoftBaseRozhinEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                //Task.ItemsSource = EsoftBaseRozhinEntities.GetContext().Task.ToList();
+                LViewExecutor.ItemsSource = EsoftBaseRozhinEntities.GetContext().Task.ToList();
             }
         }
     }
