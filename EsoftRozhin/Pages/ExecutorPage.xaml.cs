@@ -96,7 +96,15 @@ namespace EsoftRozhin.Pages
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new AddEditPageE(null));
+            //Manager.MainFrame.Navigate(new AddEditPageE(null));
+            try
+            {
+                MessageBox.Show("Страница находится в разработке!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
